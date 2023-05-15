@@ -1,0 +1,18 @@
+{
+  "name": "Elastic-Beanstalk-Sample-App",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/register": "^7.18.9",
+    "axios": "^1.1.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "ignore-styles": "^5.0.1",
+    "react-dom": "^18.2.0"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}
