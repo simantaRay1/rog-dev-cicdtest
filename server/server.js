@@ -639,24 +639,27 @@ app.get("/user/access-profile", (req, res, next) => {
 });
 
 // Unsubscribe Newsletter
-app.get("/unsubscribedailycandidates/:user_role/:uid/:token/:email_template", (req, res, next) => {
-  fs.readFile(
-    path.resolve("./build/index.html"),
-    "utf8",
-    async (err, htmlData) => {
-      if (err) {
-        console.error("Error during file reading", err);
-        return res.status(404).end();
-      }
+app.get(
+  "/unsubscribedailycandidates/:user_role/:uid/:token/:email_template",
+  (req, res, next) => {
+    fs.readFile(
+      path.resolve("./build/index.html"),
+      "utf8",
+      async (err, htmlData) => {
+        if (err) {
+          console.error("Error during file reading", err);
+          return res.status(404).end();
+        }
 
-      try {
-        return res.send(htmlData);
-      } catch (err) {
-        return res.status(404).end();
+        try {
+          return res.send(htmlData);
+        } catch (err) {
+          return res.status(404).end();
+        }
       }
-    }
-  );
-});
+    );
+  }
+);
 
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 
