@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.ff2a5989.chunk.css",
-    "main.js": "/static/js/main.0c6c2995.chunk.js",
-    "main.js.map": "/static/js/main.0c6c2995.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.0a53aa2a.js",
-    "runtime-main.js.map": "/static/js/runtime-main.0a53aa2a.js.map",
+    "main.css": "/static/css/main.b6fe5a7e.chunk.css",
+    "main.js": "/static/js/main.c2446673.chunk.js",
+    "main.js.map": "/static/js/main.c2446673.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.514ede3f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.514ede3f.js.map",
     "static/css/2.945ed5c9.chunk.css": "/static/css/2.945ed5c9.chunk.css",
-    "static/js/2.5f761142.chunk.js": "/static/js/2.5f761142.chunk.js",
-    "static/js/2.5f761142.chunk.js.map": "/static/js/2.5f761142.chunk.js.map",
-    "static/js/3.69d12159.chunk.js": "/static/js/3.69d12159.chunk.js",
-    "static/js/3.69d12159.chunk.js.map": "/static/js/3.69d12159.chunk.js.map",
+    "static/js/2.6e2071db.chunk.js": "/static/js/2.6e2071db.chunk.js",
+    "static/js/2.6e2071db.chunk.js.map": "/static/js/2.6e2071db.chunk.js.map",
+    "static/js/3.fad42c3b.chunk.js": "/static/js/3.fad42c3b.chunk.js",
+    "static/js/3.fad42c3b.chunk.js.map": "/static/js/3.fad42c3b.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.945ed5c9.chunk.css.map": "/static/css/2.945ed5c9.chunk.css.map",
-    "static/css/main.ff2a5989.chunk.css.map": "/static/css/main.ff2a5989.chunk.css.map",
-    "static/js/2.5f761142.chunk.js.LICENSE.txt": "/static/js/2.5f761142.chunk.js.LICENSE.txt",
+    "static/css/main.b6fe5a7e.chunk.css.map": "/static/css/main.b6fe5a7e.chunk.css.map",
+    "static/js/2.6e2071db.chunk.js.LICENSE.txt": "/static/js/2.6e2071db.chunk.js.LICENSE.txt",
+    "static/js/main.c2446673.chunk.js.LICENSE.txt": "/static/js/main.c2446673.chunk.js.LICENSE.txt",
     "static/media/Abbas.cff47434.jpg": "/static/media/Abbas.cff47434.jpg",
     "static/media/Athira.c4499ae9.jpg": "/static/media/Athira.c4499ae9.jpg",
     "static/media/Chinthu.b3745d3e.png": "/static/media/Chinthu.b3745d3e.png",
@@ -38,7 +39,8 @@
     "static/media/hiring-person.3447effd.png": "/static/media/hiring-person.3447effd.png",
     "static/media/hospital-default.880f8222.jpg": "/static/media/hospital-default.880f8222.jpg",
     "static/media/instagram.4051d455.svg": "/static/media/instagram.4051d455.svg",
-    "static/media/lady-nurse.2cb79377.png": "/static/media/lady-nurse.2cb79377.png",
+    "static/media/lady-nurse-single.2cb79377.png": "/static/media/lady-nurse-single.2cb79377.png",
+    "static/media/lady-nurse.34f91703.png": "/static/media/lady-nurse.34f91703.png",
     "static/media/left-img.5d659fb3.jpg": "/static/media/left-img.5d659fb3.jpg",
     "static/media/leslie.0ff35326.png": "/static/media/leslie.0ff35326.png",
     "static/media/linkedin.2e90660e.svg": "/static/media/linkedin.2e90660e.svg",
@@ -52,10 +54,10 @@
     "static/media/twitter.3161ffa8.svg": "/static/media/twitter.3161ffa8.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.0a53aa2a.js",
+    "static/js/runtime-main.514ede3f.js",
     "static/css/2.945ed5c9.chunk.css",
-    "static/js/2.5f761142.chunk.js",
-    "static/css/main.ff2a5989.chunk.css",
-    "static/js/main.0c6c2995.chunk.js"
+    "static/js/2.6e2071db.chunk.js",
+    "static/css/main.b6fe5a7e.chunk.css",
+    "static/js/main.c2446673.chunk.js"
   ]
 }

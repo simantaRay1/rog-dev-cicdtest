@@ -45,22 +45,16 @@ app.get("/", (req, res, next) => {
 
 //Sitemap
 app.get("/sitemap.xml", (req, res, next) => {
-  fs.readFile(
-    path.resolve("./build/sitemap.xml"),
-    "utf8",
-    async (err, htmlData) => {
-      if (err) {
-        console.error("Error during file reading", err);
-        return res.status(404).end();
-      }
-
-      try {
-        return res.send(htmlData);
-      } catch (err) {
-        return res.status(404).end();
-      }
-    }
-  );
+  return res.sendFile("./src/sitemap.xml", { root: "." });
+});
+app.get("/sitemap1.xml", (req, res, next) => {
+  return res.sendFile("./src/sitemap1.xml", { root: "." });
+});
+app.get("/sitemap2.xml", (req, res, next) => {
+  return res.sendFile("./src/sitemap2.xml", { root: "." });
+});
+app.get("/sitemap3.xml", (req, res, next) => {
+  return res.sendFile("./src/sitemap3.xml", { root: "." });
 });
 
 //Job Details page
@@ -293,55 +287,77 @@ app.get("/jobSearch/:optional", (req, res, next) => {
   const api_url = `${process.env.API_URL}google-indexing?${
     url_category && `position=${url_category}`
   }&${metaTitleFour && `location=${metaTitleFour}`}`;
-  console.log(api_url);
 
-  const response = axios.get(api_url).then(function (data) {
-    fs.readFile(
-      path.resolve("./build/index.html"),
-      "utf8",
-      async (err, htmlData) => {
-        if (err) {
-          console.error("Error during file reading", err);
-          return res.status(404).end();
+  const response = axios
+    .get(api_url)
+    .then(function (data) {
+      fs.readFile(
+        path.resolve("./build/index.html"),
+        "utf8",
+        async (err, htmlData) => {
+          if (err) {
+            console.error("Error during file reading", err);
+            return res.status(404).end();
+          }
+          // let html_data = htmlData;
+
+          try {
+            return res.send(
+              htmlData
+                .replace(
+                  "<title>Ring of Hires</title>",
+                  `<title>${
+                    url_category && metaTitleFour
+                      ? url_category + " Jobs in " + metaTitleFour
+                      : metaTitleFour
+                      ? "Jobs in " + metaTitleFour
+                      : url_category
+                      ? url_category + " Jobs"
+                      : "Jobsearch"
+                  }| Ring of Hires</title>`
+                )
+                .replace(
+                  "https://www.ringofhires.com",
+                  `https://www.ringofhires.com/jobSearch`
+                )
+                .replace(
+                  "__META_DESCRIPTION__",
+                  data.data?.meta_description ? data.data?.meta_description : ""
+                )
+                .replace(
+                  "__META_KEYWORDS__",
+                  data.data?.meta_keywords ? data.data?.meta_keywords : ""
+                )
+            );
+          } catch (err) {
+            return res.status(404).end();
+          }
         }
-        // let html_data = htmlData;
-
-        try {
-          return res.send(
-            htmlData
-              .replace(
+      );
+    })
+    .catch((err) => {
+      fs.readFile(
+        path.resolve("./build/index.html"),
+        "utf8",
+        async (err, htmlData) => {
+          if (err) {
+            console.error("Error during file reading", err);
+            return res.status(404).end();
+          }
+          try {
+            return res.send(
+              htmlData.replace(
                 "<title>Ring of Hires</title>",
-                `<title>${
-                  url_category && metaTitleFour
-                    ? url_category + " Jobs in " + metaTitleFour
-                    : metaTitleFour
-                    ? "Jobs in " + metaTitleFour
-                    : url_category
-                    ? url_category + " Jobs"
-                    : "Jobsearch"
-                }| Ring of Hires</title>`
+                `<title>Jobsearch | Ring of Hires</title>`
               )
-              .replace(
-                "https://www.ringofhires.com",
-                `https://www.ringofhires.com/jobSearch`
-              )
-              .replace(
-                "__META_DESCRIPTION__",
-                data.data?.meta_description ? data.data?.meta_description : ""
-              )
-              .replace(
-                "__META_KEYWORDS__",
-                data.data?.meta_keywords ? data.data?.meta_keywords : ""
-              )
-          );
-        } catch (err) {
-          return res.status(404).end();
+            );
+          } catch (err) {
+            return res.status(404).end();
+          }
         }
-      }
-    );
-  });
+      );
+    });
 });
-
 //Hire Search page
 app.get("/hireSearch/:optional", (req, res, next) => {
   fs.readFile(
@@ -430,6 +446,36 @@ app.get("/profile/:random", (req, res, next) => {
       }
 
       try {
+        return res.send(
+          htmlData.replace(
+            "<script></script>",
+            `<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11112703767"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-11112703767');
+            </script>`
+          )
+        );
+      } catch (err) {
+        return res.status(404).end();
+      }
+    }
+  );
+});
+
+// Candidate page
+app.get("/applications/:id", (req, res, next) => {
+  fs.readFile(
+    path.resolve("./build/index.html"),
+    "utf8",
+    async (err, htmlData) => {
+      if (err) {
+        console.error("Error during file reading", err);
+        return res.status(404).end();
+      }
+      try {
         return res.send(htmlData);
       } catch (err) {
         return res.status(404).end();
@@ -440,26 +486,6 @@ app.get("/profile/:random", (req, res, next) => {
 
 // Edit Profile page
 app.get("/profile/job-edit/:id", (req, res, next) => {
-  fs.readFile(
-    path.resolve("./build/index.html"),
-    "utf8",
-    async (err, htmlData) => {
-      if (err) {
-        console.error("Error during file reading", err);
-        return res.status(404).end();
-      }
-
-      try {
-        return res.send(htmlData);
-      } catch (err) {
-        return res.status(404).end();
-      }
-    }
-  );
-});
-
-// Candidate page
-app.get("/applications/:id", (req, res, next) => {
   fs.readFile(
     path.resolve("./build/index.html"),
     "utf8",
@@ -588,7 +614,6 @@ app.get("/set-password/:uid/:token/:user_id", (req, res, next) => {
         console.error("Error during file reading", err);
         return res.status(404).end();
       }
-
       try {
         return res.send(htmlData);
       } catch (err) {
@@ -608,7 +633,6 @@ app.get("/activate-account/:uid/:token", (req, res, next) => {
         console.error("Error during file reading", err);
         return res.status(404).end();
       }
-
       try {
         return res.send(htmlData);
       } catch (err) {
